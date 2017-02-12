@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Marck+Script' rel='stylesheet'>
+    <script src='libs/bonsai-0.4.1.min.js'>
+    </script>
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #000;
+            text-align: center;
+        }
+
+        #player {
+            margin: auto;
+            width: 100%;
+            background: #000;
+            box-shadow: 0 0 20px #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='player'>
+</body>
+
+<script>
+    runner();
+    
+    function runner() {
+
+        var player = bonsai.run(document.getElementById('player'), {
+            urls: ['js/skeletons/drawer.js',
+                'js/assets/couple.js',
+                'js/assets/heart.js',
+                'js/assets/message.js',
+                'js/helper.js',
+                'js/main.js'
+            ],
+            height: '100%',
+            framerate: 40
+        });
+
+        window.onresize = function() {
+            player.sendMessage('externalData', {
+                resize: true
+            });
+        };
+
+        window.onresize();
+    }
+</script>
+
+</html>
